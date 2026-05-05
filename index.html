@@ -404,29 +404,6 @@
             animation-delay: 4s;
         }
 
-        /* Music Toggle */
-        #music-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 2000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-        #music-toggle.playing {
-            animation: rotate-music 4s linear infinite;
-        }
-        @keyframes rotate-music { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
         @keyframes float {
             from {
                 transform: translateY(100vh) scale(0.8);
@@ -455,11 +432,8 @@
         <span class="item">💖</span>
     </div>
 
-    <!-- Music Toggle Button -->
-    <div id="music-toggle" onclick="toggleMusic()">🎵</div>
-
     <!-- Audio Elements -->
-    <audio id="bg-music" src="background.mp3" loop preload="auto"></audio>
+    <audio id="bg-music" src="background.mp3" loop autoplay preload="auto"></audio>
     <audio id="voice-audio" src="gift_audio.m4a" preload="auto"></audio>
 
     <!-- SCREEN 1: Photo Puzzle -->
@@ -518,10 +492,8 @@
         // Auto-play background music on any interaction
         function startMusic() {
             const bgMusic = document.getElementById('bg-music');
-            const toggle = document.getElementById('music-toggle');
             if (bgMusic) {
                 bgMusic.play().then(() => {
-                    toggle.classList.add('playing');
                     // Remove all listeners once playing
                     ['click', 'pointerdown', 'touchstart', 'mousedown', 'keydown'].forEach(ev => {
                         document.removeEventListener(ev, startMusic);
@@ -529,18 +501,6 @@
                 }).catch(e => {
                     // Still trying...
                 });
-            }
-        }
-
-        function toggleMusic() {
-            const bgMusic = document.getElementById('bg-music');
-            const toggle = document.getElementById('music-toggle');
-            if (bgMusic.paused) {
-                bgMusic.play();
-                toggle.classList.add('playing');
-            } else {
-                bgMusic.pause();
-                toggle.classList.remove('playing');
             }
         }
         ['click', 'pointerdown', 'touchstart', 'mousedown', 'keydown'].forEach(ev => {
