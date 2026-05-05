@@ -441,7 +441,9 @@
         <h2>Happy Birthday <span class="heart">❤️</span><br>Photo complete karo 😊</h2>
         <div id="puzzle-container-wrapper" style="position: relative; width: 300px; height: 475px;">
             <div id="puzzle-container" class="puzzle-container"></div>
-            <div id="final-photo" class="puzzle-container hidden" style="position: absolute; top: 0; left: 0; background-image: url('image/image1.jpg'); background-size: 300px 475px; border-radius: 12px; gap: 0; padding: 0;"></div>
+            <div id="final-photo" class="puzzle-container hidden"
+                style="position: absolute; top: 0; left: 0; background-image: url('image/image1.jpg'); background-size: 300px 475px; border-radius: 12px; gap: 0; padding: 0;">
+            </div>
         </div>
         <button id="next-btn-1" class="btn hidden" onclick="showScreen(2)">Next</button>
     </div>
@@ -654,7 +656,7 @@
                     // Hide pieces and show original image
                     document.getElementById('puzzle-container').classList.add('hidden');
                     document.getElementById('final-photo').classList.remove('hidden');
-                    
+
                     setTimeout(() => {
                         document.getElementById('next-btn-1').classList.remove('hidden');
                     }, 800);
@@ -798,7 +800,7 @@
             btn.disabled = true;
 
             // Lower background music volume while playing voice
-            if (bgMusic) bgMusic.volume = 0.1;
+            if (bgMusic) bgMusic.volume = 0.15;
 
             // Play audio
             audio.currentTime = 0;
